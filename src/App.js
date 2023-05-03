@@ -1,8 +1,9 @@
+import Header from './components/Header';
+// import Main from './components/Main';
+
 function App() {
   return (
-    <header>
-      <h1>RSS Feed Converter</h1>
-    </header> 
+    <Header/> 
   );
 }
 
