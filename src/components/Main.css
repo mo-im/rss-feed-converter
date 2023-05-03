@@ -1,0 +1,58 @@
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+
+button{
+    width: fit-content;
+    padding: .35rem 1.5rem;
+    border-radius: 15px;
+    background-color: var(--color2);
+    color: var(--color1);
+    border: none;
+    transition-duration: .3s;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.1);
+    background-color: var(--color3);
+}
+
+.convert-container,
+.content-container{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.convert-container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#rss_url,
+#numberOfTitles {
+    padding: .25rem .5rem;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin-left: .5rem;
+}
+
+#rss-feed{
+    width: 600px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #FFFFFF;
+    padding: 2.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.button-container{
+    display: flex;
+    gap: 5rem;
+}

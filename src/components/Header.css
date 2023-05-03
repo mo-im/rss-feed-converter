@@ -1,0 +1,14 @@
+:root{
+    --color1: #F1F6F9;
+    --color2: #394867;
+    --color3: #212A3E;
+}
+
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color3);
+    color: var(--color1);
+}
