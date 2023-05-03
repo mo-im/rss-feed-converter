@@ -71,16 +71,16 @@ function containerCheck() {
     clearButton.style.display = "block";
     container.style.display = "block";
     previewText.style.display = "block";
-  } else {
-    copyButton.style.display = "none";
-    clearButton.style.display = "none";
-    container.style.display = "none";
-    previewText.style.display = "none";
     setTimeout(function () {
       container.scrollIntoView({
         behavior: 'smooth'
       });
     }, 100);
+  } else {
+    copyButton.style.display = "none";
+    clearButton.style.display = "none";
+    container.style.display = "none";
+    previewText.style.display = "none";
   }
 }
 
