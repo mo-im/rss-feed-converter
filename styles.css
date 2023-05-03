@@ -84,6 +84,9 @@ button:hover{
     border-radius: 25px;
     margin-left: .5rem;
 }
+#preview-text{
+    width: 600px;
+}
 
 #rss-feed{
     width: 600px;

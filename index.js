@@ -1,6 +1,7 @@
 const rss_feed = document.getElementById("rss_url");
 const numberOfTitles = document.getElementById("numberOfTitles");
 const convertButton = document.getElementById('convert');
+const previewText = document.getElementById("preview-text");
 const container = document.querySelector("#rss-feed");
 const copyButton = document.getElementById("copy");
 const clearButton = document.getElementById("clear");
@@ -62,6 +63,11 @@ function createBanner(site) {
   container.style.border = "1px solid gray";
   container.margin = "10px 0";
   container.append(banner);
+  setTimeout(function () {
+    container.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }, 100);
 }
 
 function containerCheck() {
@@ -69,10 +75,12 @@ function containerCheck() {
     copyButton.style.display = "block";
     clearButton.style.display = "block";
     container.style.display = "block";
+    previewText.style.display = "block";
   } else {
     copyButton.style.display = "none";
     clearButton.style.display = "none";
     container.style.display = "none";
+    previewText.style.display = "none";
   }
 }
 
