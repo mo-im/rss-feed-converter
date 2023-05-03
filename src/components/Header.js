@@ -1,9 +1,9 @@
 
 function Header() {
     return (
-        <div>
-            <p>Test</p>
-        </div>
+        <header>
+            <h1>RSS Feed Converter</h1>
+        </header>
     )
 }
 
