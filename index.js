@@ -62,12 +62,6 @@ function createBanner(site) {
   container.style.backgroundColor = "#F4F4F4";
   container.style.border = "1px solid gray";
   container.margin = "10px 0";
-  container.append(banner);
-  setTimeout(function () {
-    container.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }, 100);
 }
 
 function containerCheck() {
@@ -81,6 +75,12 @@ function containerCheck() {
     clearButton.style.display = "none";
     container.style.display = "none";
     previewText.style.display = "none";
+    container.append(banner);
+    setTimeout(function () {
+      container.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }, 100);
   }
 }
 
