@@ -28,6 +28,17 @@ header{
     color: var(--color1);
 }
 
+header > a {
+    user-select: none;
+    text-decoration: none;
+    color: var(--color1);
+    transition: color .3s ease;
+}
+
+header > a:hover{
+    color: #c1c6c9;
+}
+
 main{
     display: flex;
     flex-direction: column;
