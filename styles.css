@@ -4,6 +4,8 @@
     --color1: #F4F4F4;
     --color2: #038597;    ;
     --color3: #42C0C4;
+    --color4: #58595C;
+
 
 }
 
@@ -25,7 +27,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color3);
+    background-color: var(--color4);
     color: var(--color1);
 }
 
@@ -46,6 +48,7 @@ header > a {
 .convert-icon{
     position: absolute;
     right: 0;
+    color: var(--color3);
     -webkit-animation: rotate-scale-up 0.65s linear both;
     animation: rotate-scale-up 0.65s linear both;
 }
