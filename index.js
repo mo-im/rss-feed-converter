@@ -59,8 +59,8 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "10px auto";
-  container.style.backgroundColor = "#F4F4F4";
-  container.style.border = "1px solid gray";
+  container.style.backgroundColor = "#FFFFFF";
+  container.style.border = "1px solid #F4F4F4";
   container.margin = "10px 0";
   container.append(banner);
 }
@@ -72,7 +72,7 @@ function containerCheck() {
     container.style.display = "block";
     previewText.style.display = "block";
     setTimeout(function () {
-      container.scrollIntoView({
+      previewText.scrollIntoView({
         behavior: 'smooth'
       });
     }, 100);
