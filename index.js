@@ -52,10 +52,11 @@ function createBanner(site) {
     text.style.textAlign = "center";
     container.append(text);
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
+    banner.alt = "Sustainable-Investment banner: Latest Content";
   } else if (site === "IQ") {
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_96/IWIQ23-500x150.jpg";
+    banner.alt = "Investment IQ banner";
   }
-  banner.alt = "image: Are real assets the answer to managing inflation?"
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "10px auto";
