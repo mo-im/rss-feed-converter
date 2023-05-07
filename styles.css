@@ -39,7 +39,7 @@ header > a {
     gap: .75rem;
     user-select: none;
     text-decoration: none;
-    color: var(--color1);
+    color: var(--color1); 
     transition: color .3s ease;
 }
 
@@ -126,6 +126,11 @@ footer{
 
 .logo{
     width: 125px;
+    transition: transform .3s;
+}
+
+.logo:hover{
+    transform: scale(1.15);
 }
 
 @keyframes rotate-scale-up {
