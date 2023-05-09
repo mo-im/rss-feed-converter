@@ -16,13 +16,17 @@ convertButton.addEventListener("click", () => {
       const items = data.items.slice(0, numberOfTitles.value);  // Grab titles from feed
       createBanner(site);
       createTitles(items);
+      container.style.backgroundColor = "#F4F4F4";
       containerCheck();
     });
 });
 
 // Create Banner
 function createBanner(site) {
-  const bannerContainer = document.createElement("tbody");
+  const bannerBody = document.createElement("tbody");
+  const bannerRow = document.createElement("tr");
+  const bannerData = document.createElement("td");
+
   const banner = document.createElement("img");
   if (site === "SI") {
     const text = document.createElement("h3");
@@ -30,7 +34,7 @@ function createBanner(site) {
     text.style.paddingBottom = "10px";
     text.style.fontSize = "17px";
     text.style.textAlign = "center";
-    bannerContainer.append(text);
+    bannerData.append(text);
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
     banner.alt = "Sustainable-Investment banner: Latest Content";
   } else if (site === "IQ") {
@@ -40,13 +44,19 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "10px auto";
-  bannerContainer.append(banner);
-  container.append(bannerContainer);
+
+  bannerData.appendChild(banner);
+  bannerRow.appendChild(bannerData);
+  bannerBody.append(bannerRow);
+  container.append(bannerBody);
 }
 
 // Create Titles
 function createTitles(items){
-  const titlesContainer = document.createElement("tbody");
+  const titlesBody = document.createElement("tbody");
+  const titlesRow = document.createElement("tr");
+  const titlesData = document.createElement("td");
+
   const listElement = document.createElement("ul");
       items.forEach(item => {
         const title = item.title;
@@ -69,8 +79,10 @@ function createTitles(items){
         listElement.appendChild(listItemElement);
       });
 
-      titlesContainer.appendChild(listElement);
-      container.appendChild(titlesContainer);
+      titlesData.appendChild(listElement);
+      titlesRow.appendChild(titlesData);
+      titlesBody.appendChild(titlesRow);
+      container.appendChild(titlesBody);
 }
 
 // Reset Container
