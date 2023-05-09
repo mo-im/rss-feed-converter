@@ -17,7 +17,6 @@ convertButton.addEventListener("click", () => {
       createBanner(site);
       createTitles(items);
       container.style.backgroundColor = "#F4F4F4";
-      container.style.padding = "16px";
       containerCheck();
     });
 });
@@ -32,6 +31,7 @@ function createBanner(site) {
   if (site === "SI") {
     const text = document.createElement("h3");
     text.textContent = "Content from Sustainable-Investment.com";
+    text.style.paddingBottom = "16px";
     text.style.fontSize = "17px";
     text.style.textAlign = "center";
     bannerData.append(text);
@@ -43,7 +43,7 @@ function createBanner(site) {
   }
   banner.style.width = "500px";
   banner.style.display = "block";
-  banner.style.margin = "10px auto";
+  banner.style.margin = "0 auto";
 
   bannerData.appendChild(banner);
   bannerRow.appendChild(bannerData);
@@ -62,7 +62,7 @@ function createTitles(items){
         const title = item.title;
         const link = item.link;
         const titleName = document.createElement("h3");
-        titleName.style.paddingTop = "10px";
+        titleName.style.paddingTop = "16px";
         const hyperlink = document.createElement("a");
         hyperlink.href = link;
         hyperlink.textContent = title;
@@ -78,7 +78,7 @@ function createTitles(items){
         listItemElement.appendChild(titleName);
         listElement.appendChild(listItemElement);
       });
-
+      titlesData.style.width = "600px";
       titlesData.appendChild(listElement);
       titlesRow.appendChild(titlesData);
       titlesBody.appendChild(titlesRow);
