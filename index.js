@@ -26,9 +26,11 @@ function createBanner(site) {
   const bannerBody = document.createElement("tbody");
   const bannerRow = document.createElement("tr");
   const bannerData = document.createElement("td");
+  const hyperlink = document.createElement("a");
 
   const banner = document.createElement("img");
   if (site === "SI") {
+    hyperlink.href = "https://www.sustainable-investment.com/";
     const text = document.createElement("h3");
     text.textContent = "Content from Sustainable-Investment.com";
     text.style.paddingBottom = "16px";
@@ -38,6 +40,7 @@ function createBanner(site) {
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
     banner.alt = "Sustainable-Investment banner: Latest Content";
   } else if (site === "IQ") {
+    hyperlink.href = "https://www.investmentiq.co.uk/";
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_96/IWIQ23-500x150.jpg";
     banner.alt = "Investment IQ banner";
   }
@@ -45,7 +48,8 @@ function createBanner(site) {
   banner.style.display = "block";
   banner.style.margin = "0 auto";
 
-  bannerData.appendChild(banner);
+  hyperlink.appendChild(banner);
+  bannerData.appendChild(hyperlink);
   bannerRow.appendChild(bannerData);
   bannerBody.append(bannerRow);
   container.append(bannerBody);
