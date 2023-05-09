@@ -17,7 +17,7 @@ convertButton.addEventListener("click", () => {
       createBanner(site);
       createTitles(items);
       container.style.backgroundColor = "#F4F4F4";
-      container.style.padding = "14px";
+      container.style.padding = "16px";
       containerCheck();
     });
 });
