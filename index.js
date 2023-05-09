@@ -17,6 +17,7 @@ convertButton.addEventListener("click", () => {
       createBanner(site);
       createTitles(items);
       container.style.backgroundColor = "#F4F4F4";
+      container.style.padding = "14px";
       containerCheck();
     });
 });
@@ -31,7 +32,6 @@ function createBanner(site) {
   if (site === "SI") {
     const text = document.createElement("h3");
     text.textContent = "Content from Sustainable-Investment.com";
-    text.style.paddingBottom = "10px";
     text.style.fontSize = "17px";
     text.style.textAlign = "center";
     bannerData.append(text);
