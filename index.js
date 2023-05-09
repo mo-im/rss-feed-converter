@@ -16,7 +16,11 @@ convertButton.addEventListener("click", () => {
       const items = data.items.slice(0, numberOfTitles.value);  // Grab titles from feed
       createBanner(site);
       createTitles(items);
+
       container.style.backgroundColor = "#F4F4F4";
+      container.style.padding = "16px";
+      container.style.width = "600px";
+      
       containerCheck();
     });
 });
@@ -47,6 +51,7 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "0 auto";
+  bannerData.setAttribute("align","center");
 
   hyperlink.appendChild(banner);
   bannerData.appendChild(hyperlink);
@@ -82,7 +87,10 @@ function createTitles(items){
         listItemElement.appendChild(titleName);
         listElement.appendChild(listItemElement);
       });
+
+      titlesData.setAttribute("align","left");
       titlesData.style.width = "600px";
+
       titlesData.appendChild(listElement);
       titlesRow.appendChild(titlesData);
       titlesBody.appendChild(titlesRow);
