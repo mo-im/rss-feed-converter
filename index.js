@@ -20,7 +20,7 @@ convertButton.addEventListener("click", () => {
       container.style.backgroundColor = "#F4F4F4";
       container.style.padding = "16px";
       container.style.width = "600px";
-      
+
       containerCheck();
     });
 });
@@ -51,6 +51,7 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "0 auto";
+  bannerData.style.width = "560px";
   bannerData.setAttribute("align","center");
 
   hyperlink.appendChild(banner);
@@ -89,7 +90,7 @@ function createTitles(items){
       });
 
       titlesData.setAttribute("align","left");
-      titlesData.style.width = "600px";
+      titlesData.style.width = "560px";
 
       titlesData.appendChild(listElement);
       titlesRow.appendChild(titlesData);
