@@ -11,38 +11,18 @@ convertButton.addEventListener("click", () => {
   fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rss_feed.value}`)
     .then(response => response.json())
     .then(data => {
-      container.innerHTML = "";
-      const site = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site');
-      const items = data.items.slice(0, numberOfTitles.value);
+      container.innerHTML = ""; // Resets container
+      const site = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site'); // Grab titles from feed
+      const items = data.items.slice(0, numberOfTitles.value);  // Grab titles from feed
       createBanner(site);
-      const listElement = document.createElement("ul");
-      items.forEach(item => {
-        const title = item.title;
-        const link = item.link;
-        const titleElement = document.createElement("h3");
-        titleElement.style.paddingTop = "10px";
-        const linkElement = document.createElement("a");
-        linkElement.href = link;
-        linkElement.textContent = title;
-        linkElement.style.color = "#25254f";
-        linkElement.addEventListener("mouseover", () => {
-          linkElement.style.color = "#65d9cd";
-        });
-        linkElement.addEventListener("mouseout", () => {
-          linkElement.style.color = "#25254f";
-        });
-        titleElement.appendChild(linkElement);
-        const listItemElement = document.createElement("li");
-        listItemElement.appendChild(titleElement);
-        listElement.appendChild(listItemElement);
-      });
-      container.appendChild(listElement);
+      createTitles(items);
       containerCheck();
     });
 });
 
-
+// Create Banner
 function createBanner(site) {
+  const bannerContainer = document.createElement("tbody");
   const banner = document.createElement("img");
   if (site === "SI") {
     const text = document.createElement("h3");
@@ -50,7 +30,7 @@ function createBanner(site) {
     text.style.paddingBottom = "10px";
     text.style.fontSize = "17px";
     text.style.textAlign = "center";
-    container.append(text);
+    bannerContainer.append(text);
     banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
     banner.alt = "Sustainable-Investment banner: Latest Content";
   } else if (site === "IQ") {
@@ -60,12 +40,40 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "10px auto";
-  container.style.backgroundColor = "#FFFFFF";
-  container.style.border = "1px solid #F4F4F4";
-  container.margin = "10px 0";
-  container.append(banner);
+  bannerContainer.append(banner);
+  container.append(bannerContainer);
 }
 
+// Create Titles
+function createTitles(items){
+  const titlesContainer = document.createElement("tbody");
+  const listElement = document.createElement("ul");
+      items.forEach(item => {
+        const title = item.title;
+        const link = item.link;
+        const titleName = document.createElement("h3");
+        titleName.style.paddingTop = "10px";
+        const hyperlink = document.createElement("a");
+        hyperlink.href = link;
+        hyperlink.textContent = title;
+        hyperlink.style.color = "#25254f";
+        // hyperlink.addEventListener("mouseover", () => {
+        //   hyperlink.style.color = "#65d9cd";
+        // });
+        // hyperlink.addEventListener("mouseout", () => {
+        //   hyperlink.style.color = "#25254f";
+        // });
+        titleName.appendChild(hyperlink);
+        const listItemElement = document.createElement("li");
+        listItemElement.appendChild(titleName);
+        listElement.appendChild(listItemElement);
+      });
+
+      titlesContainer.appendChild(listElement);
+      container.appendChild(titlesContainer);
+}
+
+// Reset Container
 function containerCheck() {
   if (container.innerHTML !== "") {
     copyButton.style.display = "block";
@@ -87,7 +95,7 @@ function containerCheck() {
 
 containerCheck();
 
-// JavaScript code to copy the innerHTML of the div to the clipboard
+// Copy to clipboard
 copyButton.addEventListener("click", () => {
   const text = document.getElementById("feed-container").innerHTML;
   const temp = document.createElement("input");
@@ -99,6 +107,7 @@ copyButton.addEventListener("click", () => {
   alert("Copied to clipboard: " + text);
 })
 
+// Clear container
 clearButton.addEventListener("click", () => {
   container.innerHTML = "";
   containerCheck();
