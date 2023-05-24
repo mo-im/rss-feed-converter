@@ -103,7 +103,7 @@ button:hover{
 }
 
 #rss-feed{
-    width: 600px;
+    width: 100%;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #FFFFFF !important;
     padding: 2.5rem;
