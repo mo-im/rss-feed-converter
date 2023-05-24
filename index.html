@@ -12,7 +12,9 @@
 
 <body>
     <header>
-        <a href=""><h1>RSS Feed Converter</h1><i class="convert-icon fa-solid fa-rotate fa-2x"></i></a>
+        <a href="">
+            <h1>RSS Feed Converter</h1><i class="convert-icon fa-solid fa-rotate fa-2x"></i>
+        </a>
     </header>
 
     <main>
@@ -46,7 +48,10 @@
         <div class="content-container">
             <p id="preview-text">Preview:</p>
             <div id="feed-container">
-                <table id="rss-feed" style="width: 100%; padding: 1rem;"></table>
+                <table id="rss-feed" border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"
+                    style="padding: 1rem;">
+                    <tbody id="rss-feed-body"></tbody>
+                </table>
             </div>
             <div class="button-container">
                 <button id="copy">Copy</button>
@@ -55,7 +60,9 @@
         </div>
     </main>
     <footer>
-        <a href="https://www.incisivemedia.com/"><img class="logo" src="https://www.incisivemedia.com/wp-content/uploads/2021/01/IM17-logo-RGB-HR-1.svg" alt="Incisive Media Logo"></a>
+        <a href="https://www.incisivemedia.com/"><img class="logo"
+                src="https://www.incisivemedia.com/wp-content/uploads/2021/01/IM17-logo-RGB-HR-1.svg"
+                alt="Incisive Media Logo"></a>
     </footer>
     <script src="index.js"></script>
 </body>

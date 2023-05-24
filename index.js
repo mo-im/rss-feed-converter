@@ -3,6 +3,7 @@ const numberOfTitles = document.getElementById("numberOfTitles");
 const convertButton = document.getElementById('convert');
 const previewText = document.getElementById("preview-text");
 const container = document.querySelector("#rss-feed");
+const tbody = document.querySelector("#rss-feed-body");
 const copyButton = document.getElementById("copy");
 const clearButton = document.getElementById("clear");
 
@@ -11,7 +12,7 @@ convertButton.addEventListener("click", () => {
   fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rss_feed.value}`)
     .then(response => response.json())
     .then(data => {
-      container.innerHTML = ""; // Resets container
+      tbody.innerHTML = ""; // Resets tbody
       const site = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site'); // Grab titles from feed
       const items = data.items.slice(0, numberOfTitles.value);  // Grab titles from feed
       createBanner(site);
@@ -19,15 +20,14 @@ convertButton.addEventListener("click", () => {
 
       container.style.backgroundColor = "#F4F4F4";
       container.style.padding = "16px";
-      container.style.width = "600px";
 
-      containerCheck();
+
+      tbodyCheck();
     });
 });
 
 // Create Banner
 function createBanner(site) {
-  const bannerBody = document.createElement("tbody");
   const bannerRow = document.createElement("tr");
   const bannerData = document.createElement("td");
   const hyperlink = document.createElement("a");
@@ -51,23 +51,21 @@ function createBanner(site) {
   banner.style.width = "500px";
   banner.style.display = "block";
   banner.style.margin = "0 auto";
-  bannerData.style.width = "560px";
   bannerData.setAttribute("align","center");
 
   hyperlink.appendChild(banner);
   bannerData.appendChild(hyperlink);
   bannerRow.appendChild(bannerData);
-  bannerBody.append(bannerRow);
-  container.append(bannerBody);
+  tbody.append(bannerRow);
 }
 
 // Create Titles
 function createTitles(items){
-  const titlesBody = document.createElement("tbody");
   const titlesRow = document.createElement("tr");
   const titlesData = document.createElement("td");
-
   const listElement = document.createElement("ul");
+  listElement.style.marginLeft = "1rem";
+
       items.forEach(item => {
         const title = item.title;
         const link = item.link;
@@ -90,17 +88,15 @@ function createTitles(items){
       });
 
       titlesData.setAttribute("align","left");
-      titlesData.style.width = "560px";
-
       titlesData.appendChild(listElement);
+      titlesData.style.display = "inline-block";
       titlesRow.appendChild(titlesData);
-      titlesBody.appendChild(titlesRow);
-      container.appendChild(titlesBody);
+      tbody.appendChild(titlesRow);
 }
 
-// Reset Container
-function containerCheck() {
-  if (container.innerHTML !== "") {
+// Reset tbody
+function tbodyCheck() {
+  if (tbody.innerHTML !== "") {
     copyButton.style.display = "block";
     clearButton.style.display = "block";
     container.style.display = "block";
@@ -118,7 +114,7 @@ function containerCheck() {
   }
 }
 
-containerCheck();
+tbodyCheck();
 
 // Copy to clipboard
 copyButton.addEventListener("click", () => {
@@ -132,8 +128,8 @@ copyButton.addEventListener("click", () => {
   alert("Copied to clipboard: " + text);
 })
 
-// Clear container
+// Clear tbody
 clearButton.addEventListener("click", () => {
-  container.innerHTML = "";
-  containerCheck();
+  tbody.innerHTML = "";
+  tbodyCheck();
 })
