@@ -1,3 +1,5 @@
+
+const convertIcon = document.querySelector(".convert-icon");
 const rss_feed = document.getElementById("rss_url");
 const numberOfTitles = document.getElementById("numberOfTitles");
 const convertButton = document.getElementById('convert');
@@ -137,4 +139,15 @@ copyButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => {
   tbody.innerHTML = "";
   tbodyCheck();
+  animateAndRemoveClass(convertIcon, "animate-convert-icon", 650);
 })
+
+// Animate Icon
+function animateAndRemoveClass(element, className, duration) {
+  element.classList.add(className);
+  setTimeout(() => {
+    element.classList.remove(className);
+  }, duration);
+}
+
+animateAndRemoveClass(convertIcon, "animate-convert-icon", 650);
