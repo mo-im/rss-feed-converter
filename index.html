@@ -23,7 +23,7 @@
             <div>
                 <div class="rss-selection">
                     <label id="selectLabel">Select</label>
-                    <select id="rss_url" name="cars" required>
+                    <select id="rss_url" name="rss_url" required>
                         <option value="https://www.sustainable-investment.com/rss_v2/feeds" data-site="SI">
                             SI RSS feed</option>
                         <option value="https://www.investmentiq.co.uk/feeds/rss/pensions" data-site="IQ">IQ RSS Pensions
@@ -40,7 +40,18 @@
                 </div>
                 <div class="number-selection">
                     <label id="numberLabel">Number of Articles</label>
-                    <input id="numberOfTitles" type="number" value="1" min="1" max="10" required>
+                    <select id="numberOfTitles" name="numeber_of_titles" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                 </div>
             </div>
             <button id="convert">Convert</button>
