@@ -96,7 +96,8 @@ button:hover {
 }
 
 #rss_url,
-#numberOfTitles {
+#numberOfTitles,
+#banners {
     padding: .25rem .5rem;
     border: 1px solid black;
     border-radius: 25px;

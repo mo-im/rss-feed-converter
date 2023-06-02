@@ -9,6 +9,7 @@ const container = document.querySelector("#rss-feed");
 const tbody = document.querySelector("#rss-feed-body");
 const copyButton = document.getElementById("copy");
 const clearButton = document.getElementById("clear");
+const bannerList = document.getElementById("banners");
 
 
 convertButton.addEventListener("click", () => {
@@ -16,7 +17,7 @@ convertButton.addEventListener("click", () => {
     .then(response => response.json())
     .then(data => {
       tbody.innerHTML = ""; // Resets tbody
-      const site = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site'); // Grab titles from feed
+      const site = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site');
       const items = data.items.slice(0, numberOfTitles.value);  // Grab titles from feed
       createBanner(site);
       createTitles(items);
@@ -32,33 +33,38 @@ function createBanner(site) {
   const bannerRow = document.createElement("tr");
   const bannerData = document.createElement("td");
   const hyperlink = document.createElement("a");
+  let bannerSelection = bannerList.value;
 
-  const banner = document.createElement("img");
-  if (site === "SI") {
-    hyperlink.href = "https://www.sustainable-investment.com/";
-    const text = document.createElement("h3");
-    text.textContent = "Content from Sustainable-Investment.com";
-    text.style.fontSize = "17px";
-    text.style.textAlign = "center";
-    bannerData.append(text);
-    banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
-    banner.alt = "Sustainable-Investment banner: Latest Content";
-  } else if (site === "IQ") {
-    hyperlink.href = "https://www.investmentiq.co.uk/";
-    banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_96/IWIQ23-500x150.jpg";
-    banner.alt = "Investment IQ banner";
-  }
+  bannerSelection === "default" ? bannerSelection = site : bannerSelection;
   
-  banner.style.padding = "16px 0";
-  banner.style.width = "100%";
-  banner.style.display = "block";
-  banner.style.margin = "0 auto";
-  bannerData.setAttribute("align","center");
+  if (bannerSelection !== "none"){
+    const banner = document.createElement("img");
+    if (bannerSelection === "SI") {
+      hyperlink.href = "https://www.sustainable-investment.com/";
+      const text = document.createElement("h3");
+      text.textContent = "Content from Sustainable-Investment.com";
+      text.style.fontSize = "17px";
+      text.style.textAlign = "center";
+      bannerData.append(text);
+      banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_88/SI22-600x200-newletter_header_latestcontent.jpg";
+      banner.alt = "Sustainable-Investment banner: Latest Content";
+    } else if (bannerSelection === "IQ") {
+      hyperlink.href = "https://www.investmentiq.co.uk/";
+      banner.src = "https://msgfocus.com/files/amf_incisive_business/workspace_96/IWIQ23-500x150.jpg";
+      banner.alt = "Investment IQ banner";
+    } 
+    
+    banner.style.padding = "16px 0";
+    banner.style.width = "100%";
+    banner.style.display = "block";
+    banner.style.margin = "0 auto";
+    bannerData.setAttribute("align","center");
 
-  hyperlink.appendChild(banner);
-  bannerData.appendChild(hyperlink);
-  bannerRow.appendChild(bannerData);
-  tbody.append(bannerRow);
+    hyperlink.appendChild(banner);
+    bannerData.appendChild(hyperlink);
+    bannerRow.appendChild(bannerData);
+    tbody.append(bannerRow);
+  }
 }
 
 // Create Titles
@@ -141,6 +147,22 @@ clearButton.addEventListener("click", () => {
   tbodyCheck();
   animateAndRemoveClass(convertIcon, "animate-convert-icon", 650);
 })
+
+rss_feed.addEventListener("change", () => {
+  bannerList.value = "default";
+  disableBanner();
+});
+
+
+// Disable banner based on RSS Feed selection
+function disableBanner() {
+  const selectedFeed = rss_feed.options[rss_feed.selectedIndex].getAttribute('data-site');
+  for(let i = 0; i < bannerList.length; i++){
+    bannerList[i].value === selectedFeed ? bannerList[i].disabled = true : bannerList[i].disabled = false;
+  }
+}
+
+disableBanner();
 
 // Animate Icon
 function animateAndRemoveClass(element, className, duration) {
